@@ -6,9 +6,10 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { CommentBox } from "../comments/CommentBox";
 import { CommentCursor } from "./CommentCursor";
+import { useTrackMousePosition } from "../utils/useTrackMousePosition";
 
 const posts = [
   {
@@ -30,23 +31,10 @@ export const Post = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({ x: event.clientX, y: event.clientY });
-    };
-
-    if (isHovering) {
-      document.addEventListener("mousemove", handleMouseMove);
-
-      return () => {
-        // timeout prevent brutal cursor disappearance
-        // @todo optimize
-        setTimeout(() => {
-          document.removeEventListener("mousemove", handleMouseMove);
-        }, 500);
-      };
-    }
-  }, [isHovering]);
+  useTrackMousePosition({
+    enabled: isHovering,
+    setMousePosition,
+  });
 
   return (
     <>

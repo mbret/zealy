@@ -18,6 +18,7 @@ export const CommentCursor = memo(
           bgColor="#2d2f31"
           alignItems="center"
           justifyContent="center"
+        //   transition="top 0.03s ease, left 0.03s ease"
         >
           <EditIcon color="white" />
         </Stack>
