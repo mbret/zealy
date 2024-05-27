@@ -24,11 +24,11 @@ export const CommentForm = ({
 
   return (
     <>
-      <Box border="1px solid red" {...rest}>
+      <Box {...rest}>
         <FormControl>
           <InputGroup size="md">
             <Input
-              pl="4.5rem"
+              pl="3.5rem"
               pr="4.5rem"
               type="email"
               value={text}
@@ -36,7 +36,7 @@ export const CommentForm = ({
                 setText(e.target.value);
               }}
             />
-            <InputLeftElement width="4.5rem">
+            <InputLeftElement width="3.5rem">
               <Button
                 h="1.75rem"
                 size="sm"
@@ -45,7 +45,7 @@ export const CommentForm = ({
                   onLock(true);
                 }}
               >
-                +
+                😀
               </Button>
             </InputLeftElement>
             <InputRightElement width="4.5rem">

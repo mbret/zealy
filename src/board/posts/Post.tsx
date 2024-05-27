@@ -74,7 +74,7 @@ export const Post = ({
           position="absolute"
           right={0}
           top={0}
-          transform="translate(110%, 2%)"
+          transform="translate(105%, 2%)"
         />
       </Box>
       <CommentCursor
