@@ -1,7 +1,6 @@
 import {
   Avatar,
   Box,
-  Fade,
   Heading,
   Stack,
   Text,
@@ -24,7 +23,7 @@ const posts = [
 ];
 
 export const Post = () => {
-  const [visible, setVisible] = useState(false);
+  const [isCommentBoxVisible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const boxBgColor = useColorModeValue("white", "gray.900");
   const headingColor = useColorModeValue("gray.700", "white");
@@ -34,7 +33,6 @@ export const Post = () => {
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       setMousePosition({ x: event.clientX, y: event.clientY });
-      console.log({ x: event.clientX, y: event.clientY });
     };
 
     if (isHovering) {
@@ -98,7 +96,7 @@ export const Post = () => {
               setVisible(false);
             }
           }}
-          visible={visible}
+          visible={isCommentBoxVisible}
           position="absolute"
           right={0}
           top={0}
