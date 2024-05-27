@@ -1,4 +1,4 @@
-import { Box, BoxProps, Stack } from "@chakra-ui/react";
+import { Box, BoxProps, Fade, ScaleFade, Stack } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
 import { Comment } from "./Comment";
 import { CommentForm } from "./CommentForm";
@@ -51,17 +51,23 @@ export const CommentBox = ({
   });
 
   return (
-    <Box ref={ref} width={300} {...rest}>
-      {visible && (
+    <Box
+      ref={ref}
+      width={300}
+      pointerEvents={visible ? undefined : "none"}
+      {...rest}
+    >
+      <ScaleFade initialScale={0.8} in={visible}>
         <Box
           maxW={"445px"}
           w={"full"}
           boxShadow={"2xl"}
           rounded={"md"}
-          p={6}
+          p={3}
           overflow={"hidden"}
         >
-          <Stack border="1px solid blue">
+          {/* @todo add height change transition */}
+          <Stack>
             {comments.map((item, index) => (
               <Comment
                 key={index}
@@ -83,7 +89,7 @@ export const CommentBox = ({
             />
           </Stack>
         </Box>
-      )}
+      </ScaleFade>
     </Box>
   );
 };
